@@ -226,7 +226,12 @@ export function AccountForm({
               )}
               <div className="space-y-2">
                 <Label htmlFor="account-email">Email address</Label>
-                {register && role === "member" && <p className="text-xs text-muted-foreground">Use your organisation email, such as karan.talekar@whitecode.com. Its domain must match your team’s domain to join.</p>}
+                {register && role === "member" && (
+                  <p className="text-xs text-muted-foreground">
+                    Use your organisation email, such as karantalekar@gmail.com.
+                    Its domain must match your team’s domain to join.
+                  </p>
+                )}
                 <div className="relative">
                   <Mail className="absolute left-3.5 top-3.5 h-4 w-4 text-muted-foreground" />
                   <Input
@@ -235,7 +240,7 @@ export function AccountForm({
                     type="email"
                     required
                     autoComplete="email"
-                    placeholder="you@company.com"
+                    placeholder="you@gmail.com"
                     className="h-11 rounded-xl pl-10"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -331,7 +336,7 @@ export function AccountForm({
                           value={option.value}
                           checked={role === option.value}
                           onChange={() => setRole(option.value)}
-                        className="peer absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
+                          className="peer absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
                         />
                         <span className="pointer-events-none absolute inset-0 rounded-xl peer-focus-visible:ring-2 peer-focus-visible:ring-ring" />
                         <option.icon className="mb-2 h-5 w-5 text-primary" />
