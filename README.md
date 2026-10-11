@@ -34,7 +34,7 @@ List requests follow API pagination rather than showing only the first page. Ver
 
 Members can also add calendar events in their teams through Calendar → Add Event. Editing existing events remains a team-owner permission.
 
-For HTTPS deployments, configure secure cookies and an exact frontend origin on the backend. Frontend and API should be deployed under the same site because the session cookie uses SameSite=Lax. See `Tasko-BE/README.md` for backend deployment configuration.
+For HTTPS deployments on different sites (for example, Vercel and Render), set `COOKIE_SAMESITE=none`, `COOKIE_SECURE=true`, and `ALLOWED_ORIGINS=["https://your-frontend-domain"]` in the backend hosting environment. Use the exact frontend origin without a trailing slash. The default `SameSite=Lax` cookie cannot authenticate cross-site fetch requests. Restart or redeploy the backend, then sign in again to replace the old cookie. Browsers that block third-party cookies require a same-site frontend/API deployment or frontend proxy. Set `NEXT_PUBLIC_API_URL=https://tasko-be.onrender.com/api/v1` before building the frontend. See `Tasko-BE/README.md` for backend deployment configuration.
 
 ## Verification
 

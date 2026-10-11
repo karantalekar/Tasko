@@ -23,7 +23,7 @@ import { Brand } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { api, type Session } from "@/lib/api";
+import { api, ApiError, type Session } from "@/lib/api";
 
 export function AccountForm({
   register,
@@ -191,12 +191,22 @@ export function AccountForm({
                     setShowPassword(false);
                     router.replace("/login");
                   } else {
-                    onSession(
-                      await api<Session>("/auth/login", {
-                        method: "POST",
-                        body: JSON.stringify(credentials),
-                      }),
-                    );
+                    await api<Session>("/auth/login", {
+                      method: "POST",
+                      body: JSON.stringify(credentials),
+                    });
+                    // Confirm the browser sends the HttpOnly cookie before loading teams.
+                    let session: Session;
+                    try {
+                      session = await api<Session>("/auth/session");
+                    } catch (error) {
+                      if (error instanceof ApiError && error.status === 401)
+                        throw new Error(
+                          "Your login succeeded, but the session cookie could not be used. For deployments on different sites, configure the backend with COOKIE_SAMESITE=none and COOKIE_SECURE=true. If cookies are blocked by your browser, use a same-site frontend and API or a frontend proxy.",
+                        );
+                      throw error;
+                    }
+                    onSession(session);
                     router.replace("/");
                   }
                 } catch (error) {
