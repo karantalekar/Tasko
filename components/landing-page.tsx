@@ -3,13 +3,16 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  ArrowUp,
   ArrowUpRight,
   CalendarDays,
   Check,
   CheckCheck,
   Clock3,
+  Github,
   LayoutDashboard,
   Layers3,
+  Linkedin,
   Moon,
   Sun,
   Users2,
@@ -314,6 +317,28 @@ export function LandingPage() {
         <p className="text-muted-foreground">
           Built for work. Designed for people.
         </p>
+        <nav className="flex items-center gap-4" aria-label="Social profiles">
+          <a
+            href="https://www.linkedin.com/in/karan-talekar-06k/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 transition-colors hover:text-primary"
+            aria-label="Karan Talekar on LinkedIn (opens in a new tab)"
+          >
+            <Linkedin className="h-4 w-4" aria-hidden="true" />
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/karantalekar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 transition-colors hover:text-primary"
+            aria-label="Karan Talekar on GitHub (opens in a new tab)"
+          >
+            <Github className="h-4 w-4" aria-hidden="true" />
+            GitHub
+          </a>
+        </nav>
         <Link
           href="/login"
           className="inline-flex items-center gap-2 hover:text-primary"
@@ -321,6 +346,28 @@ export function LandingPage() {
           Open your workspace <ArrowUpRight className="h-4 w-4" />
         </Link>
       </footer>
+      <div className="mx-auto flex max-w-[1440px] justify-end px-5 pb-6 lg:px-10">
+        <Button
+          type="button"
+          size="icon"
+          className="group rounded-full shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95 motion-reduce:transform-none motion-reduce:transition-none"
+          aria-label="Back to top"
+          title="Back to top"
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                ? "instant"
+                : "smooth",
+            })
+          }
+        >
+          <ArrowUp
+            className="h-5 w-5 motion-safe:animate-bounce group-hover:animate-none"
+            aria-hidden="true"
+          />
+        </Button>
+      </div>
     </div>
   );
 }
