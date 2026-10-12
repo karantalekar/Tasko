@@ -23,12 +23,12 @@ export function Header({
   const [search, setSearch] = useState("");
   const router = useRouter();
   return (
-    <header className="space-y-4 animate-slide-in-up">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-2 flex-1">
+    <header className="space-y-4 pt-[calc(4rem+env(safe-area-inset-top))] lg:pt-0 lg:animate-[slideInUp_0.5s_ease-out_forwards]">
+      <div className="fixed inset-x-0 top-0 z-40 flex h-[calc(4rem+env(safe-area-inset-top))] items-center justify-between gap-3 border-b border-border bg-background px-4 pt-[env(safe-area-inset-top)] lg:static lg:h-auto lg:flex-wrap lg:border-0 lg:bg-transparent lg:p-0">
+        <div className="flex min-w-0 items-center gap-2 flex-1">
           <MobileNav />
           <form
-            className="relative max-w-md flex-1"
+            className="relative min-w-0 max-w-md flex-1"
             onSubmit={(e) => {
               e.preventDefault();
               router.push(`/tasks?q=${encodeURIComponent(search.trim())}`);
@@ -44,11 +44,11 @@ export function Header({
             />
           </form>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <Avatar className="w-8 h-8">
             <AvatarFallback>{initials(user.name)}</AvatarFallback>
           </Avatar>
-          <div className="text-xs">
+          <div className="hidden text-xs lg:block">
             <p className="font-semibold">{user.name}</p>
             <p className="text-muted-foreground">{user.email}</p>
           </div>

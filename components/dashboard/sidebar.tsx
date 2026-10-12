@@ -40,7 +40,9 @@ export function Sidebar() {
 
   return (
     <aside className="fixed top-0 left-0 w-64 bg-card border-r border-border p-4 h-screen overflow-y-auto lg:block">
-      <div className="mb-7 px-1 pt-1"><Brand /></div>
+      <div className="mb-7 px-1 pt-1">
+        <Brand />
+      </div>
 
       <div className="space-y-4">
         <div>
