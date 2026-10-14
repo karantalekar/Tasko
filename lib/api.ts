@@ -95,7 +95,7 @@ export type Timesheet = {
 export type Page<T> = { items: T[]; total: number; limit: number; offset: number };
 
 const baseUrl = (
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1"
+  process.env.NEXT_PUBLIC_API_URL || "https://tasko-be.onrender.com/api/v1"
 ).replace(/\/$/, "");
 
 export class ApiError extends Error {
