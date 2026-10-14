@@ -137,6 +137,7 @@ export function CalendarContent() {
               {daily.map((event) => (
                 <div key={event.id} className="p-3 border rounded-lg">
                   <h4 className="font-medium">{event.title}</h4>
+                  {event.url && <Button asChild size="sm" className="my-2"><a href={event.url}>Join meeting</a></Button>}
                   <p className="text-xs text-muted-foreground">
                     {new Date(event.starts_at).toLocaleString()} ...{" "}
                     {new Date(event.ends_at).toLocaleString()}

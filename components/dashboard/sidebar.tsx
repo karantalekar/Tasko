@@ -4,6 +4,7 @@ import {
   LayoutDashboard,
   CheckSquare,
   Calendar,
+  Video,
   BarChart3,
   Users,
   Settings,
@@ -23,6 +24,7 @@ const menuItems = [
   { icon: CheckSquare, label: "Tasks", href: "/tasks" },
   { icon: ClipboardList, label: "Timesheets", href: "/timesheets" },
   { icon: Calendar, label: "Calendar", href: "/calendar" },
+  { icon: Video, label: "Meetings", href: "/meetings" },
   { icon: BarChart3, label: "Analytics", href: "/analytics" },
   { icon: Users, label: "Team", href: "/team" },
 ];

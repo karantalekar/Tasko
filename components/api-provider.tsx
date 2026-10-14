@@ -482,12 +482,18 @@ export function useEvents(from: string, to: string) {
     setLoading(true);
     setError(null);
     setEvents([]);
-    allPages<CalendarEvent>(
-      `/teams/${team.id}/events?${new URLSearchParams({ from, to })}`,
-      controller.signal,
-    )
+    Promise.all([
+      allPages<CalendarEvent>(
+        `/teams/${team.id}/events?${new URLSearchParams({ from, to })}`,
+        controller.signal,
+      ),
+      allPages<CalendarEvent>(
+        `/meetings?${new URLSearchParams({ team_id: team.id, from, to })}`,
+        controller.signal,
+      ),
+    ])
       .then((data) => {
-        if (!controller.signal.aborted) setEvents(data);
+        if (!controller.signal.aborted) setEvents(data.flat().sort((a, b) => a.starts_at.localeCompare(b.starts_at)));
       })
       .catch((e) => {
         if (!controller.signal.aborted) {

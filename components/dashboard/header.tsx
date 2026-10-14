@@ -9,6 +9,7 @@ import { MobileNav } from "./mobile-nav";
 import { useApi } from "@/components/api-provider";
 import { CreateAction } from "@/components/workspace-actions";
 import { initials } from "@/lib/api";
+import { MeetingNotifications } from "@/components/meetings/meeting-notifications";
 
 export function Header({
   title = "Tasko",
@@ -45,6 +46,7 @@ export function Header({
           </form>
         </div>
         <div className="flex shrink-0 items-center gap-2">
+          <MeetingNotifications />
           <Avatar className="w-8 h-8">
             <AvatarFallback>{initials(user.name)}</AvatarFallback>
           </Avatar>

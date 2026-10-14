@@ -16,7 +16,7 @@ export function MobileNav() {
       </SheetTrigger>
       <SheetContent side="left" className="p-0 w-64">
         <SheetTitle className="sr-only">Navigation menu</SheetTitle>
-        <SheetDescription className="sr-only">Navigate to your dashboard, tasks, calendar, team, and settings.</SheetDescription>
+        <SheetDescription className="sr-only">Navigate to your dashboard, tasks, calendar, meetings, team, and settings.</SheetDescription>
         <Sidebar />
       </SheetContent>
     </Sheet>

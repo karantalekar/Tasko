@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 
+# Backend is maintained in its own Git repository.
+/Tasko-BE/
+
 # next.js
 /.next/
 /.next-review/

@@ -54,6 +54,13 @@ export type CalendarEvent = {
   title: string;
   starts_at: string;
   ends_at: string;
+  url?: string;
+};
+export type Meeting = CalendarEvent & {
+  url: string;
+  team_ids: string[];
+  created_by: string;
+  read: boolean;
 };
 export type Timer = {
   id: string;
