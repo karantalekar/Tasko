@@ -9,7 +9,7 @@ The Next.js frontend uses the FastAPI backend in `Tasko-BE`. Visitors see a publ
 3. From the repository root, run `npm install` and `npm run dev`. On PowerShell systems that block npm scripts, use `npm.cmd`.
 4. Open `http://localhost:3000`, create an account, sign in, and create a team. Use Add Task to create your first project and task together, or create a project on the dashboard. Add other registered users by their exact email.
 
-The frontend defaults to `http://localhost:8000/api/v1`. To use another API, copy the root `.env.example` to `.env.local` and change `NEXT_PUBLIC_API_URL` (include `/api/v1`). Restart the frontend after changing it. Production builds embed this browser-visible URL at build time.
+The frontend defaults to the deployed backend at `https://tasko-be.onrender.com/api/v1`. Configure `NEXT_PUBLIC_API_URL` in `.env.local` to change it. For local backend development, set it to `/api/v1`, which Next.js proxies to `http://127.0.0.1:8000/api/v1` in development. Restart the frontend after changing it. Production builds embed this browser-visible URL at build time.
 
 Use the same hostname for frontend and backend in local development (for example, `localhost` for both). Every API call sends the session cookie. The CSRF token stays in memory and is restored from `/auth/session` after a reload. Session credentials are never stored in localStorage.
 
